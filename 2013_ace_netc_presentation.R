@@ -2,9 +2,9 @@
 # have been loaded in to R as 'aae_evaluation', 'aae_questions', 'aae_demographics'
 # 
 # e.g.
-aae_evaluation <- read.csv("~/dev/eXtension/aae_evaluation/aae_evaluation_2013-23.csv")
-aae_questions <- read.csv("~/dev/eXtension/aae_evaluation/aae_questions_2013-23.csv")
-aae_demographics <- read.csv("~/dev/eXtension/aae_evaluation/aae_demographics_2013-23.csv")
+aae_evaluation <- read.csv("~/dev/eXtension/aae_evaluation/aae_evaluation_2013-24.csv")
+aae_questions <- read.csv("~/dev/eXtension/aae_evaluation/aae_questions_2013-24.csv")
+aae_demographics <- read.csv("~/dev/eXtension/aae_evaluation/aae_demographics_2013-24.csv")
 
 ## set up some data that we'll need
 # focus on public evaluations and demographics only
@@ -30,7 +30,6 @@ demographic_response_rate = nrow(aae_demographics_public) / nrow(eligible_demogr
 # histogram of 
 # evaluation_histogram = hist(aae_evaluation$evaluation_count, breaks = 11, plot = FALSE)
 
-
 # demographic makeup
 demographic_summary = summary(aae_demographics_public)
 
@@ -46,8 +45,7 @@ plot(factor(aae_evaluation_public$evaluation_7_response,levels = c('Less than 1 
 
 # importance summary from 1 - "a personal curiosity that was not too important" to 5 "critically important to me"
 importance_summary = summary(factor(aae_evaluation_public$evaluation_1_response))
-# TODO heatmap
-
+# TODO heatmap?
 
 # economic impact
 boxplot(aae_evaluation_public$evaluation_5_value,outline=FALSE)
