@@ -1,4 +1,6 @@
 # ignore the user specific Rproj directory
 .Rproj.user
+.RData
+.Rhistory
 # ignore all csv downloads
 *.csv
