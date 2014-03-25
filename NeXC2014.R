@@ -24,3 +24,12 @@ locations$Name = tolower(locations$detected_location)
 # default colors/counts
 ggplot(locations, aes(map_id = Name, fill=happiness)) + geom_map(map=states_map) + expand_limits(x=states_map$long, y=states_map$lat) + coord_map("polyconic")
 
+# nc map
+nc_county_map <- map_data("county","north carolina")
+nc_county_map$region <- nc_county_map$subregion
+nc_satisfaction_questions = subset(satisfaction_questions,satisfaction_questions$detected_location == 'North Carolina')
+nc_locations = ddply(nc_satisfaction_questions,c('detected_county'), summarize, count=length(evaluation_10_value), happiness=mean(evaluation_10_value))
+nc_locations$Name = tolower(gsub(' County','',nc_locations$detected_county))
+
+ggplot(nc_locations, aes(map_id = Name, fill=happiness)) + geom_map(map=nc_county_map) + expand_limits(x=nc_county_map$long, y=nc_county_map$lat) + coord_map("polyconic")
+
